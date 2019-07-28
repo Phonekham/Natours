@@ -16,6 +16,21 @@ mongoose
   })
   .then(() => console.log("connected"));
 
+const tourSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "A tour must have name"],
+    unique: true
+  },
+  rating: Number,
+  price: {
+    type: Number,
+    required: [true, "A tour must have price"]
+  }
+});
+
+const Tour = mongoose.model("Tour", tourSchema);
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
