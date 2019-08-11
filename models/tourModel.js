@@ -118,6 +118,14 @@ tourSchema.pre("save", function(next) {
   next();
 });
 
+tourSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: "guides",
+    select: "-__v -passwordChangedAt"
+  });
+  next();
+});
+
 // 5. Modelling Tour Guides Embedding
 // tourSchema.pre("save", async function(next) {
 //   const guidesPromise = this.guides.map(async id => await User.findById(id));
