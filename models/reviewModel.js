@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Tour = require("./tourModel");
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -38,6 +39,50 @@ reviewSchema.pre(/^find/, function(next) {
     select: "name photo"
   });
   next();
+});
+
+reviewSchema.statics.calcAverageRatings = async function(tourId) {
+  // console.log(tourId);
+  const stats = await this.aggregate([
+    {
+      $match: { tour: tourId }
+    },
+    {
+      $group: {
+        _id: "$tour",
+        nRating: { $sum: 1 },
+        avgRating: { $avg: "$rating" }
+      }
+    }
+  ]);
+  console.log(stats);
+  if (stats.length > 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingQuantity: stats[0].nRating,
+      ratingsAverage: stats[0].avgRating
+    });
+  } else {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingQuantity: 0,
+      ratingsAverage: 0
+    });
+  }
+};
+
+reviewSchema.post("save", function() {
+  // this point to current review
+  this.constructor.calcAverageRatings(this.tour);
+});
+
+// For update and delete  review findOneAnd command
+reviewSchema.pre(/^findOneAnd/, async function(next) {
+  this.r = await this.findOne();
+  // console.log(this.r);
+  next();
+});
+reviewSchema.post(/^findOneAnd/, async function() {
+  // this.r = await this.findOne(); does not work here, query has already executed
+  await this.r.constructor.calcAverageRatings(this.r.tour);
 });
 
 const Review = mongoose.model("Review", reviewSchema);
