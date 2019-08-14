@@ -21,6 +21,11 @@ router
   );
 
 router
+  .route("/tours-within/:distance/center/:latlng/unit/:unit")
+  .get(tourController.getToursWithin);
+// /tour-distance?distnace=123,center=-40,4534&unit=mi
+
+router
   .route("/")
   .get(tourController.getAllTours)
   .post(
