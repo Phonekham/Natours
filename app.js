@@ -70,10 +70,10 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.status(200).render("base", {
-    tour: "Natour tour",
-    name: "Phone"
-  });
+  res.status(200).render("base");
+});
+app.get("/overview", (req, res) => {
+  res.status(200).render("overview");
 });
 
 app.use("/api/v1/tours", tourRouter);
