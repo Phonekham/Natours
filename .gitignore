@@ -8,6 +8,7 @@ lerna-debug.log*
 
 public/img/users
 public/js/bundle.js.map
+public/js/bundle.js
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
