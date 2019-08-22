@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-public/img/users
+public/img
 public/js/bundle.js.map
 public/js/bundle.js
 
