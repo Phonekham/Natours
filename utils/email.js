@@ -11,10 +11,17 @@ module.exports = class Email {
     this.from = `Phonekham <${process.env.EMAIL_FROM}>`;
   }
   newTransport() {
-    if (process.env.NODE_ENV === "produc") {
-      // sendgrid
-      return 1;
+    if (process.env.NODE_ENV === "production") {
+      // Sendgrid
+      return nodemailer.createTransport({
+        service: "SendGrid",
+        auth: {
+          user: process.env.SENDGRID_USERNAME,
+          pass: process.env.SENDGRID_PASSWORD
+        }
+      });
     }
+
     return nodemailer.createTransport({
       host: "smtp.mailtrap.io",
       port: "25",
@@ -46,7 +53,7 @@ module.exports = class Email {
       // html:
     };
     // 3 create a transport and send email
-    this.newTransport().sendMail(mailOptions);
+    await this.newTransport().sendMail(mailOptions);
   }
   async sendWelcome() {
     await this.send("Welcome", "Welcome to natours family");
