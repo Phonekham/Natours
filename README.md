@@ -36,7 +36,7 @@
 - "validator": "^11.1.0" String validation and sanitization [Docs](https://github.com/validatorjs/validator.js)
 - "xss-clean": "^0.1.1"Middleware to sanitize user input [Docs](https://github.com/jsonmaur/xss-clean)
 
-##DevDependencies
+## DevDependencies
 
 - "ndb": "^1.1.4" ndb is an improved debugging experience for Node.js, enabled by Chrome DevTools [Docs](https://github.com/GoogleChromeLabs/ndb#readme)
 - "parcel-bundler": "^1.12.3" Parcel is a web application bundler, differentiated by its developer experience. It offers blazing fast performance utilizing multicore processing, and requires zero configuration [Docs](https://parceljs.org/getting_started.html)
