@@ -32,9 +32,15 @@
 - "pug": "^2.0.4" A clean, whitespace-sensitive template language for writing HTML [Docs](https://pugjs.org/api/getting-started.html)
 - "sharp": "^0.23.0" High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP and TIFF images. Uses the libvips library. [Docs](https://github.com/lovell/sharp)
 - "slugify": "^1.3.4" Slugifies a string [Docs](https://github.com/simov/slugify)
-- "stripe": "^7.8.0"[Docs]()
-- "validator": "^11.1.0"[Docs]()
-- "xss-clean": "^0.1.1"[Docs]()
+- "stripe": "^7.8.0" he Stripe Node library provides convenient access to the Stripe API from applications written in server-side JavaScript.he Stripe Node library provides convenient access to the Stripe API from applications written in server-side JavaScript. [Docs](https://stripe.com/)
+- "validator": "^11.1.0" String validation and sanitization [Docs](https://github.com/validatorjs/validator.js)
+- "xss-clean": "^0.1.1"Middleware to sanitize user input [Docs](https://github.com/jsonmaur/xss-clean)
+
+##DevDependencies
+
+- "ndb": "^1.1.4" ndb is an improved debugging experience for Node.js, enabled by Chrome DevTools [Docs](https://github.com/GoogleChromeLabs/ndb#readme)
+- "parcel-bundler": "^1.12.3" Parcel is a web application bundler, differentiated by its developer experience. It offers blazing fast performance utilizing multicore processing, and requires zero configuration [Docs](https://parceljs.org/getting_started.html)
+
 
 ## Features 
 - modern back-end stack: Node, Express, MongoDB and Mongoose (MongoDB JS driver)
