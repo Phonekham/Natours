@@ -49,7 +49,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
     return next(new AppError("Incorrect email or password", 401));
   }
   // 3 Check if everything ok send res
-  createSendToken(user, 200,,req res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.logout = (req, res) => {
@@ -199,7 +199,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   await user.save();
   // 3 update passwordChangeAt property for user
   // 4 Log the user in, send JWT
-  createSendToken(user, 200,req, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -215,5 +215,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   // 4 Log user in,send JWT
-  createSendToken(user, 200,req, res);
+  createSendToken(user, 200, req, res);
 });
